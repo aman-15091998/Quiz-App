@@ -13,7 +13,7 @@ const Question = lazy(() => import("../../Components/Question.js"));
 
 export const Quiz=()=>{
     const {tags}=useSelector(tagSelector);
-    const {currentQuestion, questionNumber, status, score}=useSelector(quizSelector); 
+    const {currentQuestion, questionNumber, status, score, questionArr}=useSelector(quizSelector); 
     const [answers, setAnswers]=useState([]);
     const [marks, setMarks]=useState(0);
 
@@ -41,17 +41,16 @@ export const Quiz=()=>{
     }, [navigate]);
 
     useEffect(()=>{
+        console.log(questionArr);
         if(tags.length==0)  // navigating to welcome page is no tags are selected
             navigate("/");
         const questions=data.questions;
         const arr=top10ByTagsCount(questions, tags); //getting top 10 questions by matching tag count
-        console.log(arr);
         dispatch(quizActions.setQuestionArr(arr));
     }, []); 
     
     //updating the score state and reseting marks, answer states when the question number changes because of timeout or submit action 
     useEffect(()=>{
-        console.log(marks);
         dispatch(quizActions.updateScore(marks));
         setMarks(0);
         setAnswers([]);
@@ -87,7 +86,7 @@ export const Quiz=()=>{
                 <Suspense fallback={<div>Loading question...</div>}>
                     <Question answers={answers} setAnswers={setAnswers} />
                 </Suspense>
-                <button className="btn btn-primary" onClick={()=>submitAnswer()}>Submit</button>
+                <button className="btn btn-primary my-2" onClick={()=>submitAnswer()}>Submit</button>
            </div>
            } 
         </div>

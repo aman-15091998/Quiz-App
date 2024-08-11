@@ -17,7 +17,6 @@ export const TagComponent=({alltags, page})=>{
         }else{
             dispatch(tagActions.removeTag(ind));
         }
-        console.log(tags);
     }
     return (
         <div className={styles.tagDiv}>

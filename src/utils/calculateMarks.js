@@ -20,6 +20,5 @@ export const calculateMarks=(currentQuestion, answers)=>{
             if(!wrong && answers.length===currentQuestion.correct.length)
                 m=4;
         }
-        console.log(m);
         return m;
 }

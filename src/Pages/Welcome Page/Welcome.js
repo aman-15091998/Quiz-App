@@ -29,7 +29,7 @@ export const Welcome=()=>{
     function goToQuiz(){ 
         navigate("/quiz");
     }
-    // console.log(allTags[0]);
+
     return (
         <div className={styles.welcomeDiv}>
             <h2 className="text-center my-2">Welcome to the Quiz App</h2>

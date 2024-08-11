@@ -7,7 +7,6 @@ const Question=({answers, setAnswers})=>{
     const {currentQuestion, questionNumber, questionArr, status, score}=useSelector(quizSelector);
 
     function handleChange(e, opt){
-        console.log(currentQuestion.correct);
         //updating selections in the answer state
         if(e.target.type=="radio"){
             setAnswers([opt]);     // simply updating the selection in case of radios
@@ -25,7 +24,7 @@ const Question=({answers, setAnswers})=>{
     
     return (
         <>
-            <p className="my-1">You have answered {questionNumber} out of {questionArr.length} questions  score={score}</p>
+            <p className="my-1">You have answered {questionNumber} out of {questionArr.length} questions</p>
             {status?<div><Timer seconds={30}/></div>:<></>}
             <h5>{currentQuestion.question}</h5>
             <p>{currentQuestion.type==="single"?"Choose the correct option!":"Multiple correct answers are possible!"}</p>
