@@ -6,11 +6,11 @@ export const TagComponent=({alltags, page})=>{
     const {tags}=useSelector(tagSelector);
     const dispatch=useDispatch();
 
-    const data=alltags.slice((page-1)*20, (page-1)*20+20);
+    const data=alltags.slice((page-1)*20, (page-1)*20+20);   //getting 20 tags for each page
     
     function handleSelection(e){
         const val=e.target.value;
-        const ind=tags.findIndex(v=>v==val);
+        const ind=tags.findIndex(v=>v==val);    //adding or removing each tag from state on user interaction
         if(ind==-1){
             if(tags.length<20)
                 dispatch(tagActions.addTag(val));

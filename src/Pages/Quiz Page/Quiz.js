@@ -14,8 +14,8 @@ const Question = lazy(() => import("../../Components/Question.js"));
 export const Quiz=()=>{
     const {tags}=useSelector(tagSelector);
     const {currentQuestion, questionNumber, status, score, questionArr}=useSelector(quizSelector); 
-    const [answers, setAnswers]=useState([]);
-    const [marks, setMarks]=useState(0);
+    const [answers, setAnswers]=useState([]); //for storing the user selections of the current question
+    const [marks, setMarks]=useState(0);  //for storing the marks of the current question
 
     const dispatch=useDispatch();
     const navigate=useNavigate();
@@ -80,6 +80,27 @@ export const Quiz=()=>{
            <>
             <h2 className="text-center my-4">Start the Quiz</h2>
             <button className="btn btn-primary" onClick={startQuiz}>Start Quiz</button>
+            <div className={styles.instructions}>
+                <h4>Instructions</h4>
+                <p>Each question carries 4 marks.</p>
+
+                <div className="single-answer">
+                    <h5>For Single Answer Correct Questions:</h5>
+                    <ul>
+                        <li>+4 marks for a correct answer.</li>
+                        <li>-2 marks for a wrong answer.</li>
+                    </ul>
+                </div>
+
+                <div className="multiple-answer">
+                    <h5>For Multiple Answer Correct Questions:</h5>
+                    <ul>
+                        <li>+4 marks if all options selected are correct.</li>
+                        <li>+1 mark for each correct option selected.</li>
+                        <li>-1 mark for each incorrect option selected.</li>
+                    </ul>
+                </div>
+            </div>
            </>
            :
            <div className={styles.questionDiv}>

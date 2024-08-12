@@ -20,5 +20,13 @@
     align-items: center;
 }
 .quizDiv button{
+    margin: 0px auto 10px auto;
+}
+.instructions{
+    width: 400px;
     margin: 0px auto 0px auto;
+    text-align: center;
+}
+ul{
+    list-style: none;
 }
